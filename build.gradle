@@ -4,7 +4,7 @@ buildscript {
         nav_version = '2.5.0-rc02'
         room_version = '2.4.2'
         ktor_version = '2.0.2'
-        kotlin_version = '1.7.0'
+        kotlin_version = '1.6.21'
         dagger_version = '2.38.1'
         accompanist_version = '0.24.12-rc'
     }
@@ -17,7 +17,7 @@ buildscript {
 plugins {
     id 'com.android.application' version '7.2.1' apply false
     id 'com.android.library' version '7.2.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
+    id 'org.jetbrains.kotlin.android' version '1.6.21' apply false
 }
 
 task clean(type: Delete) {
