@@ -1,4 +1,4 @@
-package com.emalober.borutoapp.presentation.screens
+package com.emalober.borutoapp.presentation.welcome
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.emalober.borutoapp.R
 import com.emalober.borutoapp.domain.model.OnBoardingPage
 import com.emalober.borutoapp.ui.theme.*
@@ -27,7 +28,8 @@ import com.google.accompanist.pager.*
 
 @Composable
 fun WelcomeScreen(
-    goToHome: () -> Unit
+    goToHome: () -> Unit,
+    welcomeViewModel: WelcomeViewModel = hiltViewModel()
 ) {
     val pages = listOf(
         OnBoardingPage.First,
@@ -38,7 +40,7 @@ fun WelcomeScreen(
         pages = pages,
         onClickFinish = {
             goToHome()
-            //welcomeViewModel.saveOnBoardingState(completed = true)
+            welcomeViewModel.finishOnboarding()
         }
     )
 }

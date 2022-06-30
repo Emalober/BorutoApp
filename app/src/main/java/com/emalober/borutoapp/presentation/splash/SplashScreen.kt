@@ -1,8 +1,7 @@
-package com.emalober.borutoapp.presentation.screens
+package com.emalober.borutoapp.presentation.splash
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,19 +17,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.emalober.borutoapp.R
-import com.emalober.borutoapp.navigation.Screen
 import com.emalober.borutoapp.ui.theme.BorutoAppTheme
 import com.emalober.borutoapp.ui.theme.Purple500
 import com.emalober.borutoapp.ui.theme.Purple700
-import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
-    timeMillis: Long = 4000,
+    splashViewModel: SplashViewModel = hiltViewModel(),
     goToHome: () -> Unit,
     goToWelcome: () -> Unit
 ) {
+    val onBoardingCompleted by splashViewModel.onBoardingCompleted.collectAsState()
     val degrees = remember { Animatable(0f) }
 
     LaunchedEffect(key1 = true) {
@@ -41,7 +40,10 @@ fun SplashScreen(
                 delayMillis = 200
             )
         )
-        goToWelcome()
+        if(onBoardingCompleted)
+            goToHome()
+        else
+            goToWelcome()
     }
 
 
