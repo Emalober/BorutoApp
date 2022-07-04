@@ -76,8 +76,10 @@ dependencies {
 
     // Ktor
     implementation "io.ktor:ktor-client-core:$ktor_version"
-    implementation "io.ktor:ktor-client-cio:$ktor_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
+    implementation "io.ktor:ktor-client-android:$ktor_version"
+    implementation "io.ktor:ktor-client-content-negotiation:$ktor_version"
+    implementation "io.ktor:ktor-serialization-kotlinx-json:$ktor_version"
+    implementation "io.ktor:ktor-client-logging-jvm:$ktor_version"
 
     // Pagging 3.0
     implementation "androidx.paging:paging-compose:1.0.0-alpha15"
